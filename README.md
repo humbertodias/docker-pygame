@@ -2,7 +2,9 @@
 
 Put your pygame scripts on ~/Downloads
 
-make build
+Build
+
+    make build
 
 Linux
 
@@ -15,3 +17,8 @@ Mac
 Windows
 
     make run-windows
+
+
+Test
+
+    python3 -m pygame.examples.aliens
