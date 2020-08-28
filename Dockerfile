@@ -17,17 +17,26 @@ RUN apt update && apt upgrade -y && apt install -y \
     vim \
     curl \
     make \
+    sudo \
     python3-pip \
-    python3
+    python3-pygame \
+    libsdl1.2-dev \
+    libsdl-image1.2-dev \
+    libsdl-mixer1.2-dev \
+    libsdl-sound1.2-dev \
+    libsdl-ttf2.0-dev \
+    libsdl2-dev \
+    libsdl2-image-dev \
+    libsdl2-mixer-dev \
+    libsdl2-ttf-dev \
+    libsdl2-gfx-dev \
+    libsdl2-net-dev
 
 # For x11
-RUN apt install -qqy x11-apps xterm
+RUN apt install -qqy x11-apps
 
 # Pygame
-RUN python3 -m pip install pip \
- && python3 -m pip install --upgrade pip \
- && python3 -m pip -V \
- && pip3 install pygame==2.0.0.dev10
+#RUN pip3 install pygame==2.0.0.dev10
 
 ARG USER=docker
 ARG UID=1000
@@ -36,7 +45,7 @@ ARG GID=1000
 ARG PW=docker
 
 # Option1: Using unencrypted password/ specifying password
-RUN useradd -m ${USER} --shell /bin/bash --uid=${UID} && echo "${USER}:${PW}" | chpasswd \
+RUN useradd -m ${USER} --uid=${UID} --shell /bin/bash && echo "${USER}:${PW}" | chpasswd \
 && adduser docker sudo
 
 # Setup default user, when enter docker container
