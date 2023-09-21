@@ -35,7 +35,7 @@ RUN apt update && apt upgrade -y && apt install -y \
 RUN apt install -qqy x11-apps
 
 # Pygame
-RUN pip3 install pygame==2.0.0.dev10
+RUN pip3 install pygame==2.5.2
 
 ARG USER=docker
 ARG UID=1000
