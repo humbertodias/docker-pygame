@@ -22,6 +22,7 @@ run-linux:	xhost
 	hldtux/pygame
 
 run-mac:	xhost
+	echo "brew install xquartz"
 	docker run --privileged -it --rm -u 1000:1000 \
 	--cap-add=SYS_PTRACE \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
