@@ -1,6 +1,9 @@
 build:
 	docker build . -t hldtux/pygame
 
+push:
+	docker push hldtux/pygame
+
 xhost:
 	xhost +	
 

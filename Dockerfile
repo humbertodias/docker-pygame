@@ -1,7 +1,5 @@
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
-LABEL maintainer="Humberto Dias"
-LABEL version="1.0"
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt upgrade -y && apt install -y \
@@ -19,6 +17,7 @@ RUN apt update && apt upgrade -y && apt install -y \
     sudo \
     python3-pip \
     python3-pygame \
+    python3-venv \
     libsdl1.2-dev \
     libsdl-image1.2-dev \
     libsdl-mixer1.2-dev \
@@ -34,12 +33,17 @@ RUN apt update && apt upgrade -y && apt install -y \
 # For x11
 RUN apt install -qqy x11-apps
 
+# Set bash as the default shell
+SHELL ["/bin/bash", "-c"]
+
 # Pygame
-RUN pip3 install pygame==2.5.2
+RUN python3 -m venv env \
+ && source env/bin/activate \
+ && pip3 install pygame==2.5.2
 
 ARG USER=docker
-ARG UID=1000
-ARG GID=1000
+ARG UID=1001
+ARG GID=1001
 # default password for user
 ARG PW=docker
 
