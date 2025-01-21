@@ -37,9 +37,10 @@ RUN apt install -qqy x11-apps
 SHELL ["/bin/bash", "-c"]
 
 # Pygame
+ARG PYGAME_VERSION=2.6.1
 RUN python3 -m venv env \
  && source env/bin/activate \
- && pip3 install pygame==2.5.2
+ && pip3 install pygame==${PYGAME_VERSION}
 
 ARG USER=docker
 ARG UID=1001
